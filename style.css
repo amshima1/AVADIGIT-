@@ -1,1 +1,51 @@
+body {
+    background-color: #0a0a0a;
+    color: #00ff41; /* Terminal Green */
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+#terminal {
+    width: 100%;
+    max-width: 900px;
+    min-height: 80vh;
+}
+
+.logo {
+    font-weight: bold;
+    color: #00ff41;
+    font-size: 10px; /* Scaled for mobile */
+    line-height: 1;
+}
+
+@media (min-width: 600px) {
+    .logo { font-size: 14px; }
+}
+
+.status { margin: 5px 0; font-size: 0.9rem; opacity: 0.8; }
+.online { color: #00ff00; text-shadow: 0 0 5px #00ff00; }
+
+#output {
+    margin-top: 20px;
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+.prompt { color: #ffffff; margin-right: 10px; }
+.cursor {
+    display: inline-block;
+    width: 10px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+hr { border: 0; border-top: 1px solid #333; margin: 20px 0; }
 
