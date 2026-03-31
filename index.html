@@ -10,7 +10,7 @@
 <body>
 
     <header id="main-header">
-        <button id="menu-toggle" onclick="toggleMenu()">
+        <button id="menu-toggle" onclick="toggleMenu()" aria-label="Open Menu">
             <i class="fas fa-bars"></i>
         </button>
 
@@ -20,30 +20,40 @@
     </header>
 
     <nav id="side-menu">
-        <button class="close-btn" onclick="toggleMenu()">&times;</button>
-        <ul>
-            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
-            <li><a href="#services" onclick="toggleMenu()">Services</a></li>
-            <li><a href="#resources" onclick="toggleMenu()">Resources</a></li>
-            <li><a href="#contacts" onclick="toggleMenu()">Contacts</a></li>
-        </ul>
+        <div class="menu-content">
+            <ul>
+                <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+                <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+                <li><a href="#resources" onclick="toggleMenu()">Resources</a></li>
+                <li><a href="#contacts" onclick="toggleMenu()">Contacts</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <div id="hero-background">
+    <main id="hero-section">
         <div class="background-overlay"></div>
-        <div id="terminal">
-            <div id="output"></div>
-            <div id="input-line">
-                <span class="prompt">[root@AVADIGIT ~]#</span>
-                <span id="typer"></span>
-                <span class="cursor">█</span>
+        
+        <div id="terminal-container">
+            <div id="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">AVADIGIT_CONSOLE</span>
+            </div>
+            <div id="terminal-body">
+                <div id="output"></div>
+                <div id="input-line">
+                    <span class="prompt">[root@AVADIGIT ~]#</span>
+                    <span id="typer"></span>
+                    <span class="cursor">█</span>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <a href="https://wa.me/yournumber" class="chat-status-bar">
-        <div class="online-indicator"></div>
-        <span>Chat with us—we are online</span>
+    <a href="https://wa.me/+234YOURNUMBER" class="whatsapp-bar" target="_blank">
+        <span class="online-status"></span>
+        <span class="chat-text">Chat via WhatsApp</span>
         <i class="fab fa-whatsapp"></i>
     </a>
 
