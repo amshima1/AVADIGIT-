@@ -1,21 +1,44 @@
 :root {
     --main-blue: #007bff;
+    --text-white: #ffffff;
     --neon-orange: #ff6600;
-    --bg-header: #1a1a1a;
+    --bg-black: #0a0a0a;
+    --header-height: 70px;
 }
 
-/* Header Fixes */
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-black);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-white);
+    overflow-x: hidden;
+}
+
+/* --- HEADER & LOGO --- */
 #main-header {
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 70px;
-    background-color: var(--bg-header);
+    height: var(--header-height);
+    background-color: rgba(18, 18, 18, 0.95);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Stays above everything */
+    z-index: 3000; /* Stays above the menu */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid #222;
 }
+
+#logo-container {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.logo-blue { color: var(--main-blue); }
+.logo-white { color: var(--text-white); }
 
 #menu-toggle {
     position: absolute;
@@ -25,74 +48,132 @@
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
-}
-
-/* Side Menu (Hamburger Drawer) */
-#side-menu {
-    height: 100%;
-    width: 0; /* Starts hidden */
-    position: fixed;
-    z-index: 999; /* Just below the header bar if needed, or above */
-    top: 0; left: 0;
-    background-color: rgba(10, 10, 10, 0.98);
-    overflow-x: hidden;
-    transition: 0.4s;
-    padding-top: 100px; /* Starts below header height */
-    border-right: 2px solid var(--main-blue);
-}
-
-#side-menu ul { list-style: none; padding: 0 40px; }
-#side-menu ul li { margin: 30px 0; }
-#side-menu ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.8rem;
-    font-weight: bold;
     transition: 0.3s;
 }
-#side-menu ul li a:hover { color: var(--main-blue); }
 
-.close-btn {
-    position: absolute;
-    top: 20px; right: 25px;
-    font-size: 36px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
+/* --- SLIDE-OUT MENU --- */
+#side-menu {
+    height: 100vh;
+    width: 0; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(15px);
+    z-index: 2000; /* Under the header */
+    overflow-x: hidden;
+    transition: 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    padding-top: calc(var(--header-height) + 40px);
+    border-right: 1px solid var(--main-blue);
 }
 
-/* Chat Status Bar (Bottom Right) */
-.chat-status-bar {
+#side-menu ul {
+    list-style: none;
+    padding: 0 40px;
+}
+
+#side-menu li {
+    margin-bottom: 25px;
+}
+
+#side-menu a {
+    text-decoration: none;
+    color: #888;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+#side-menu a:hover {
+    color: var(--main-blue);
+    padding-left: 10px;
+}
+
+/* --- HERO & BACKGROUND --- */
+#hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Clean architectural tech background */
+    background-image: url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+}
+
+/* --- TERMINAL --- */
+#terminal-container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 800px;
+    background: rgba(15, 15, 15, 0.9);
+    border: 1px solid #333;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    overflow: hidden;
+}
+
+#terminal-header {
+    background: #222;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+.terminal-title { margin-left: 10px; font-size: 0.75rem; color: #666; font-family: monospace; }
+
+#terminal-body {
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    min-height: 250px;
+}
+
+#output { color: #ccc; line-height: 1.6; white-space: pre-wrap; }
+.highlight { color: var(--main-blue); font-weight: bold; }
+.prompt { color: var(--main-blue); margin-right: 10px; }
+.cursor { color: var(--main-blue); animation: blink 1s infinite; }
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* --- WHATSAPP BAR --- */
+.whatsapp-bar {
     position: fixed;
     bottom: 25px;
     right: 25px;
     background-color: var(--neon-orange);
     color: white;
-    padding: 12px 20px;
+    padding: 12px 24px;
     border-radius: 50px;
     display: flex;
     align-items: center;
     gap: 12px;
     text-decoration: none;
     font-weight: bold;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-    z-index: 10;
-    font-size: 0.9rem;
+    z-index: 3000; /* Stays above the menu */
+    box-shadow: 0 8px 20px rgba(255, 102, 0, 0.4);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.online-indicator {
+.whatsapp-bar:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+.online-status {
     width: 10px; height: 10px;
-    background-color: #25d366; /* Green dot */
+    background-color: #25d366;
     border-radius: 50%;
     box-shadow: 0 0 8px #25d366;
-    animation: pulse 2s infinite;
 }
-
-@keyframes pulse {
-    0% { transform: scale(0.95); opacity: 0.7; }
-    70% { transform: scale(1.2); opacity: 1; }
-    100% { transform: scale(0.95); opacity: 0.7; }
-}
-
-/* Keep previous Hero and Terminal CSS from the last step here... */
