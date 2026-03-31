@@ -3,34 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AVADIGIT | Terminal</title>
+    <title>AVADIGIT | Digital Engineering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="terminal">
-        <div id="header">
-<pre class="logo">
-    _ __   __ _    ____  ___  ____ ___ _____ 
-   / _ \ \ / // \  |  _ \|_ _/ ___|_ _|_   _|
-  / /_\ \ V // _ \ | | | || | |  _  | |  | |  
- / /   \ \ // ___ \| |_| || | |_| | | |  | |  
-/_/     \_//_/   \_\____/|___\____|___| |_|  
-</pre>
-            <p class="status">System Status: <span class="online">ONLINE</span></p>
-            <p class="status">User: engineer@AVADIGIT</p>
-            <hr>
-        </div>
 
-        <div id="output"></div>
+    <header id="main-header">
+        <button id="menu-toggle" aria-label="Toggle Menu">
+            <i class="fas fa-bars"></i>
+        </button>
 
-        <div id="input-line">
-            <span class="prompt">[root@AVADIGIT ~]#</span>
-            <span id="typer"></span>
-            <span class="cursor">█</span>
+        <div id="logo-container">
+            <span class="logo-blue">AVA</span><span class="logo-white">DIGIT</span>
         </div>
+    </header>
+
+    <div id="hero-background">
+        <div class="background-overlay"></div>
+        
+        <div id="terminal">
+            <div id="output"></div>
+            <div id="input-line">
+                <span class="prompt">[root@AVADIGIT ~]#</span>
+                <span id="typer"></span>
+                <span class="cursor">█</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="chat-widgets">
+        <a href="#ai-chat" class="chat-btn ai-btn" title="Chat with AVADIGIT AI">
+            <i class="fas fa-robot"></i>
+        </a>
+
+        <a href="https://wa.me/+2341234567890?text=I%27m%20interested%20in%20AVADIGIT%27s%20services" class="chat-btn whatsapp-btn" target="_blank" title="Contact us on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
