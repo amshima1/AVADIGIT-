@@ -1,18 +1,39 @@
-// Add this helper function to handle HTML tags in the typing effect
-function updateOutput(text) {
-    const p = document.createElement('p');
-    p.innerHTML = text; // Changed from textContent to innerHTML
-    output.appendChild(p);
-}
+const output = document.getElementById('output');
+const typer = document.getElementById('typer');
 
 const lines = [
-    "Initializing <span class='highlight'>AVADIGIT</span> Core...",
-    "System status: <span class='online'>ENCRYPTED</span>",
-    "Loading <span class='highlight'>Software Engineering</span> Modules...",
-    "Accessing <span class='highlight'>AI Automation</span> Suite...",
+    "<span class='highlight'>Connecting Nigeria To Tomorrow.</span>",
+    "We are not just a tech agency—",
+    "We are engineers of <span class='highlight'>Digital Systems</span>.",
+    "System access: <span class='online'>ENCRYPTED</span>",
     " ",
-    "> WELCOME TO THE FUTURE OF DIGITAL GROWTH.",
-    "> MISSION: Engineering Growth through Digital Innovation.",
+    "> WELCOME TO <span class='highlight'>AVADIGIT</span>",
+    "> SERVICES: [Python Engineering] [AI Automation] [Strategic Brand Growth]",
     " ",
-    "Type 'help' to begin or contact <span class='highlight'>hi@avadigit.com</span>"
+    "Engage with our AI Bot below or reach us on WhatsApp."
 ];
+
+let lineIndex = 0;
+let charIndex = 0;
+
+function typeEffect() {
+    if (lineIndex < lines.length) {
+        if (charIndex < lines[lineIndex].length) {
+            typer.textContent += lines[lineIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(typeEffect, 45); // Typing speed
+        } else {
+            // Push the finished line to output (using innerHTML for spans)
+            const p = document.createElement('p');
+            p.innerHTML = lines[lineIndex];
+            output.appendChild(p);
+            typer.textContent = '';
+            charIndex = 0;
+            lineIndex++;
+            setTimeout(typeEffect, 500); // Pause between lines
+        }
+    }
+}
+
+// Start the sequence
+window.onload = typeEffect;
