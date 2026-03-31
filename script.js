@@ -1,7 +1,6 @@
-// Toggle Function
+// Toggle Function for 50% Screen Width
 function toggleMenu() {
     const menu = document.getElementById('side-menu');
-    // Slide out to cover 50% of screen width
     if (menu.style.width === "50%") {
         menu.style.width = "0";
     } else {
@@ -9,19 +8,19 @@ function toggleMenu() {
     }
 }
 
-// Terminal Animation
+// Terminal Typer Animation
 const output = document.getElementById('output');
 const typer = document.getElementById('typer');
 
 const lines = [
     "Initializing <span class='highlight'>AVADIGIT</span> Protocol...",
-    "Location: Nigeria >> Global Hub.",
+    "Engineering Growth >> Nigeria >> Global.",
     " ",
     "> [PROTOCOL_LOADED]",
-    "> Core Modules: [Software_Eng] [AI_Automation]",
+    "> Modules: [Software_Eng] [AI_Automation]",
     " ",
-    "Connection: <span style='color: #25d366'>SECURE_ACTIVE</span>",
-    "Use the menu or the Close (X) button to navigate."
+    "Status: <span style='color: #25d366'>SECURE_ACTIVE</span>",
+    "Reach out via the menu or WhatsApp."
 ];
 
 let lineIndex = 0;
