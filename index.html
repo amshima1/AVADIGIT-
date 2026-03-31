@@ -10,7 +10,7 @@
 <body>
 
     <header id="main-header">
-        <button id="menu-toggle" aria-label="Toggle Menu">
+        <button id="menu-toggle" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </button>
 
@@ -19,9 +19,18 @@
         </div>
     </header>
 
+    <nav id="side-menu">
+        <button class="close-btn" onclick="toggleMenu()">&times;</button>
+        <ul>
+            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+            <li><a href="#resources" onclick="toggleMenu()">Resources</a></li>
+            <li><a href="#contacts" onclick="toggleMenu()">Contacts</a></li>
+        </ul>
+    </nav>
+
     <div id="hero-background">
         <div class="background-overlay"></div>
-        
         <div id="terminal">
             <div id="output"></div>
             <div id="input-line">
@@ -32,15 +41,11 @@
         </div>
     </div>
 
-    <div id="chat-widgets">
-        <a href="#ai-chat" class="chat-btn ai-btn" title="Chat with AVADIGIT AI">
-            <i class="fas fa-robot"></i>
-        </a>
-
-        <a href="https://wa.me/+2341234567890?text=I%27m%20interested%20in%20AVADIGIT%27s%20services" class="chat-btn whatsapp-btn" target="_blank" title="Contact us on WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-    </div>
+    <a href="https://wa.me/yournumber" class="chat-status-bar">
+        <div class="online-indicator"></div>
+        <span>Chat with us—we are online</span>
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script src="script.js"></script>
 </body>
