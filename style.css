@@ -1,127 +1,122 @@
-:root {
-    --main-blue: #00d2ff;
-    --text-white: #ffffff;
-    --neon-orange: #ff6600;
-    --bg-dark: #050505;
-}
+/* -- BASIC RESET -- */
+* { margin: 0; padding: 0; box-shadow: border-box; }
+body, html { height: 100%; font-family: 'Helvetica Neue', Arial, sans-serif; overflow: hidden; background-color: #000; }
 
-body {
-    margin: 0;
-    background-color: var(--bg-dark);
-    font-family: 'Rajdhani', sans-serif;
-    color: var(--text-white);
-    overflow-x: hidden;
-}
-
-/* --- HEADER (Ensuring Full Visibility) --- */
+/* -- 1. HEADER (Static) -- */
 #main-header {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 75px;
-    background-color: rgba(5, 5, 5, 0.95);
-    backdrop-filter: blur(10px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(18, 18, 18, 0.95);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    z-index: 3000; /* Stays above the side-menu */
-    border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+    padding: 0 20px;
+    z-index: 1000;
 }
 
-#logo-container {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: 3px;
-    white-space: nowrap; /* Prevents text from breaking */
-}
-
-.logo-blue { color: var(--main-blue); }
-.logo-white { color: var(--text-white); }
+.logo-blue { color: #007bff; font-weight: bold; font-size: 1.6rem; }
+.logo-white { color: #ffffff; font-weight: bold; font-size: 1.6rem; }
 
 #menu-toggle {
-    position: absolute;
-    left: 20px;
     background: none;
     border: none;
-    color: white;
+    color: #ffffff;
     font-size: 1.5rem;
     cursor: pointer;
 }
 
-/* --- SLIDE-OUT MENU (70% Width) --- */
-#side-menu {
-    height: 100vh;
-    width: 0;
-    position: fixed;
-    top: 0; left: 0;
-    background-color: rgba(10, 10, 10, 0.98);
-    z-index: 2000; /* Below Header and WhatsApp */
-    overflow-x: hidden;
-    transition: 0.5s cubic-bezier(0.7, 0, 0.3, 1);
-    padding-top: 100px;
-    border-right: 1px solid var(--main-blue);
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 3rem;
-    cursor: pointer;
-}
-
-#side-menu ul { list-style: none; padding: 20px 40px; }
-#side-menu li { margin-bottom: 30px; }
-#side-menu a {
-    text-decoration: none;
-    color: #888;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.4rem;
-    transition: 0.3s;
-}
-#side-menu a:hover { color: var(--main-blue); padding-left: 10px; }
-
-/* --- WHATSAPP PILL --- */
-.whatsapp-pill {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background-color: var(--neon-orange);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 40px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    font-weight: 700;
-    z-index: 3000; /* Stays above the side-menu */
-    box-shadow: 0 5px 20px rgba(255, 102, 0, 0.4);
-}
-
-.online-status {
-    width: 8px; height: 8px;
-    background-color: #25d366;
-    border-radius: 50%;
-}
-
-/* --- TERMINAL & BACKGROUND --- */
+/* -- 2. HERO SECTION (Dynamic Content) -- */
 #hero-section {
+    position: relative;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg');
+    text-align: center;
+    /* Use a clean, architectural tech background */
+    background-image: url('https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1600');
     background-size: cover;
+    background-position: center;
 }
 
-#terminal-container {
-    width: 90%;
-    max-width: 650px;
-    background: rgba(15, 15, 15, 0.95);
-    border: 1px solid #333;
-    border-radius: 8px;
-    padding: 20px;
+/* Overlay darkens the image to make text pop */
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: 1;
 }
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 80%;
+    color: #ffffff;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+#typer-text {
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #ccc;
+    min-height: 3em; /* Prevents layout shifting during typing */
+}
+
+/* The vertical bar that blinks like a command line */
+.cursor {
+    display: inline-block;
+    color: #007bff; /* Neo Cloud Blue */
+    font-weight: bold;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* -- 3. WHATSAPP (Static) -- */
+#whatsapp-container {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.whatsapp-bubble {
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.chat-status {
+    background-color: rgba(255,255,255,0.9);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-status span { font-size: 0.75rem; color: #555; }
+.chat-status strong { font-size: 0.9rem; color: #000; }
