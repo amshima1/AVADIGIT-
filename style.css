@@ -1,44 +1,88 @@
+:root {
+    --bg-dark: #050505;
+    --electric-blue: #2de2ff;
+    --neon-purple: #a020f0;
+    --text-main: #e0e0e0;
+    --accent-gradient: linear-gradient(135deg, #2de2ff 0%, #a020f0 100%);
+}
+
 body {
-    background-color: #0a0a0a;
-    color: #00ff41; /* Terminal Green */
+    /* Dark mode-first palette with a subtle radial glow */
+    background: radial-gradient(circle at center, #101018 0%, #050505 100%);
+    color: var(--text-main);
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 20px;
     display: flex;
     justify-content: center;
+    min-height: 100vh;
     overflow-x: hidden;
 }
 
 #terminal {
     width: 100%;
     max-width: 900px;
-    min-height: 80vh;
 }
 
+/* The Logo now uses the Bold Gradient */
 .logo {
     font-weight: bold;
-    color: #00ff41;
-    font-size: 10px; /* Scaled for mobile */
-    line-height: 1;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 10px;
+    line-height: 1.1;
+    filter: drop-shadow(0 0 5px rgba(45, 226, 255, 0.3));
 }
 
 @media (min-width: 600px) {
     .logo { font-size: 14px; }
 }
 
-.status { margin: 5px 0; font-size: 0.9rem; opacity: 0.8; }
-.online { color: #00ff00; text-shadow: 0 0 5px #00ff00; }
-
-#output {
-    margin-top: 20px;
-    white-space: pre-wrap;
-    line-height: 1.6;
+.status { 
+    margin: 5px 0; 
+    font-size: 0.85rem; 
+    letter-spacing: 1px;
+    color: var(--electric-blue);
 }
 
-.prompt { color: #ffffff; margin-right: 10px; }
+.online { 
+    color: #fff;
+    background: var(--neon-purple);
+    padding: 2px 6px;
+    border-radius: 3px;
+    text-shadow: 0 0 8px #a020f0;
+}
+
+#output {
+    margin-top: 30px;
+    white-space: pre-wrap;
+    line-height: 1.8;
+    color: #b0b0b0; /* Slightly dimmed for readability against neon */
+}
+
+/* High-contrast highlight for keywords */
+.highlight {
+    color: var(--electric-blue);
+    font-weight: bold;
+}
+
+.prompt { 
+    color: var(--neon-purple); 
+    font-weight: bold;
+    margin-right: 10px; 
+}
+
+#typer {
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
 .cursor {
     display: inline-block;
     width: 10px;
+    background-color: var(--electric-blue);
+    box-shadow: 0 0 10px var(--electric-blue);
     animation: blink 1s infinite;
 }
 
@@ -47,5 +91,8 @@ body {
     50% { opacity: 0; }
 }
 
-hr { border: 0; border-top: 1px solid #333; margin: 20px 0; }
-
+hr { 
+    border: 0; 
+    border-top: 1px solid #222; 
+    margin: 25px 0; 
+}
