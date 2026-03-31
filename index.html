@@ -3,39 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neo Cloud | Partner in Digital Transformation</title>
+    <title>AVADIGIT | Digital Engineering</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header id="main-header">
-        <div class="logo-container">
-            <span class="logo-blue">neo</span><span class="logo-white">cloud</span>
-        </div>
-        <button id="menu-toggle">
+        <button id="menu-toggle" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </button>
+        <div id="logo-container">
+            <span class="logo-blue">AVA</span><span class="logo-white">DIGIT</span>
+        </div>
     </header>
+
+    <nav id="side-menu">
+        <button class="close-btn" onclick="toggleMenu()">&times;</button>
+        <ul>
+            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+            <li><a href="#resources" onclick="toggleMenu()">Resources</a></li>
+            <li><a href="#contacts" onclick="toggleMenu()">Contacts</a></li>
+        </ul>
+    </nav>
 
     <main id="hero-section">
         <div class="background-overlay"></div>
-        
-        <div class="hero-content">
-            <h1>Your Digital Transformation Journey</h1>
-            
-            <p id="typer-text"><span class="cursor">|</span></p>
+        <div id="terminal-container">
+            <div id="terminal-body">
+                <div id="output"></div>
+                <div id="input-line">
+                    <span class="prompt">[root@AVADIGIT ~]#</span>
+                    <span id="typer"></span>
+                    <span class="cursor">█</span>
+                </div>
+            </div>
         </div>
     </main>
 
-    <div id="whatsapp-container">
-        <a href="#" class="whatsapp-bubble">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <div class="chat-status">
-            <span>Online</span><strong>Chat with us</strong>
-        </div>
-    </div>
+    <a href="https://wa.me/+2341234567890" class="whatsapp-pill" target="_blank">
+        <span class="online-status"></span>
+        <span class="pill-text">Chat via WhatsApp</span>
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script src="script.js"></script>
 </body>
