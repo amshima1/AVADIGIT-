@@ -1,26 +1,27 @@
-// 1. Menu Logic
+// Toggle Function
 function toggleMenu() {
     const menu = document.getElementById('side-menu');
-    if (menu.style.width === "300px") {
+    // Slide out to cover 50% of screen width
+    if (menu.style.width === "50%") {
         menu.style.width = "0";
     } else {
-        menu.style.width = "300px";
+        menu.style.width = "50%";
     }
 }
 
-// 2. Typing Effect Logic
+// Terminal Animation
 const output = document.getElementById('output');
 const typer = document.getElementById('typer');
 
 const lines = [
-    "Initializing <span class='highlight'>AVADIGIT</span> Core Systems...",
-    "Connecting Nigeria to Tomorrow.",
+    "Initializing <span class='highlight'>AVADIGIT</span> Protocol...",
+    "Location: Nigeria >> Global Hub.",
     " ",
-    "> [ENGINEERING_GROWTH_THROUGH_DIGITAL_INNOVATION]",
-    "> Services: Python Engineering | AI Automation | Web Systems",
+    "> [PROTOCOL_LOADED]",
+    "> Core Modules: [Software_Eng] [AI_Automation]",
     " ",
-    "Status: <span style='color: #25d366'>SYSTEMS_ACTIVE</span>",
-    "Open the menu to explore or chat via WhatsApp below."
+    "Connection: <span style='color: #25d366'>SECURE_ACTIVE</span>",
+    "Use the menu or the Close (X) button to navigate."
 ];
 
 let lineIndex = 0;
@@ -28,21 +29,18 @@ let charIndex = 0;
 
 function typeEffect() {
     if (lineIndex < lines.length) {
-        if (charIndex < lines[lineIndex].length) {
-            // Support for HTML tags in typing
-            if (lines[lineIndex].charAt(charIndex) === "<") {
-                // Find closing tag to skip over it
-                const closingTagIndex = lines[lineIndex].indexOf(">", charIndex);
-                charIndex = closingTagIndex + 1;
+        let currentLine = lines[lineIndex];
+        if (charIndex < currentLine.length) {
+            if (currentLine.charAt(charIndex) === "<") {
+                charIndex = currentLine.indexOf(">", charIndex) + 1;
             } else {
                 charIndex++;
             }
-            
-            typer.innerHTML = lines[lineIndex].substring(0, charIndex);
-            setTimeout(typeEffect, 35);
+            typer.innerHTML = currentLine.substring(0, charIndex);
+            setTimeout(typeEffect, 30);
         } else {
             const p = document.createElement('p');
-            p.innerHTML = lines[lineIndex];
+            p.innerHTML = currentLine;
             output.appendChild(p);
             typer.innerHTML = '';
             charIndex = 0;
