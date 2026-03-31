@@ -11,18 +11,16 @@
 <body>
 
     <header id="main-header">
-        <button id="menu-toggle" onclick="toggleMenu()" aria-label="Open Menu">
+        <button id="menu-toggle" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </button>
-
         <div id="logo-container">
             <span class="logo-blue">AVA</span><span class="logo-white">DIGIT</span>
         </div>
     </header>
 
     <nav id="side-menu">
-        <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu">&times;</button>
-        
+        <button class="close-btn" onclick="toggleMenu()">&times;</button>
         <ul>
             <li><a href="#home" onclick="toggleMenu()">Home</a></li>
             <li><a href="#services" onclick="toggleMenu()">Services</a></li>
@@ -33,13 +31,11 @@
 
     <main id="hero-section">
         <div class="background-overlay"></div>
-        
         <div id="terminal-container">
             <div id="terminal-header">
                 <span class="dot red"></span>
                 <span class="dot yellow"></span>
                 <span class="dot green"></span>
-                <span class="terminal-title">AVADIGIT_CONSOLE_v3.0</span>
             </div>
             <div id="terminal-body">
                 <div id="output"></div>
