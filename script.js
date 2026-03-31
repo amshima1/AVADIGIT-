@@ -1,52 +1,78 @@
 /**
- * Neo Cloud Dynamic Text Presentation
+ * AVADIGIT Terminal & Navigation Logic
+ * Features: 75% Slide-out Menu & Cycling Text Presentation
  */
 
-// 1. Define the sequence of messages
-const textsToPresent = [
-    "Neo Cloud: Your Partner In Digital Transformation.",
-    "Connecting Nigeria To Tomorrow.",
-    "Digital Africa Through Innovation.",
-    "Join us and help build a better future."
-];
-
-// 2. Configuration parameters
-const typingSpeed = 50; // Milliseconds per character
-const pauseBetweenTexts = 2000; // Milliseconds to wait before starting next text
-const elementToUpdate = document.getElementById('typer-text');
-
-// 3. Keep track of our position
-let textArrayIndex = 0;
-let characterIndex = 0;
-
-// 4. The main presentation function
-function startPresentation() {
-    // If we have finished all texts, reset the loop
-    if (textArrayIndex >= textsToPresent.length) {
-        textArrayIndex = 0;
-        characterIndex = 0;
-    }
-
-    // A. Type the characters of the current message one-by-one
-    if (characterIndex < textsToPresent[textArrayIndex].length) {
-        // We preserve the cursor element
-        const currentText = textsToPresent[textArrayIndex].substring(0, characterIndex + 1);
-        elementToUpdate.innerHTML = currentText + '<span class="cursor">|</span>';
-        
-        characterIndex++;
-        
-        // Wait and type the next character
-        setTimeout(startPresentation, typingSpeed);
-        
+// --- 1. NAVIGATION CONTROL ---
+function toggleMenu() {
+    const menu = document.getElementById('side-menu');
+    
+    // Toggle width between 0 and 75% for major screen coverage
+    if (menu.style.width === "75%") {
+        menu.style.width = "0";
     } else {
-        // B. The text is complete. Now pause.
-        characterIndex = 0; // Reset character pointer
-        textArrayIndex++; // Move to the next text in array
-        
-        // Wait and start the NEXT text
-        setTimeout(startPresentation, pauseBetweenTexts);
+        menu.style.width = "75%";
     }
 }
 
-// 5. Initialize the presentation once the window loads
-window.onload = startPresentation;
+// --- 2. CYCLING TEXT PRESENTATION ---
+const typer = document.getElementById('typer');
+const output = document.getElementById('output');
+
+// The sequence of professional messages to display one after the other
+const presentationLines = [
+    "Neo Cloud: Your Partner In Digital Transformation.",
+    "Connecting Nigeria To Tomorrow.",
+    "Digital Africa Through Innovation.",
+    "Engineering Growth >> Nigeria >> Global.",
+    "Join us and help build a better future."
+];
+
+let lineIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function playPresentation() {
+    const currentFullText = presentationLines[lineIndex];
+    
+    if (!isDeleting) {
+        // TYPING PHASE
+        typer.innerHTML = currentFullText.substring(0, charIndex + 1);
+        charIndex++;
+
+        if (charIndex === currentFullText.length) {
+            // Pause at the end of the sentence
+            isDeleting = true;
+            setTimeout(playPresentation, 3000); 
+        } else {
+            setTimeout(playPresentation, 50); 
+        }
+    } else {
+        // DELETING PHASE (Clears for the next message)
+        typer.innerHTML = currentFullText.substring(0, charIndex - 1);
+        charIndex--;
+
+        if (charIndex === 0) {
+            isDeleting = false;
+            lineIndex = (lineIndex + 1) % presentationLines.length; // Loop back to start
+            setTimeout(playPresentation, 500);
+        } else {
+            setTimeout(playPresentation, 30);
+        }
+    }
+}
+
+// --- 3. INITIALIZATION ---
+window.onload = () => {
+    // Start the cycling text animation
+    playPresentation();
+
+    // Close menu if user clicks on the main content area
+    document.addEventListener('click', (e) => {
+        const menu = document.getElementById('side-menu');
+        const toggle = document.getElementById('menu-toggle');
+        if (menu.style.width === "75%" && !menu.contains(e.target) && !toggle.contains(e.target)) {
+            toggleMenu();
+        }
+    });
+};
