@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AVADIGIT | Digital Engineering</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,14 +21,14 @@
     </header>
 
     <nav id="side-menu">
-        <div class="menu-content">
-            <ul>
-                <li><a href="#home" onclick="toggleMenu()">Home</a></li>
-                <li><a href="#services" onclick="toggleMenu()">Services</a></li>
-                <li><a href="#resources" onclick="toggleMenu()">Resources</a></li>
-                <li><a href="#contacts" onclick="toggleMenu()">Contacts</a></li>
-            </ul>
-        </div>
+        <button class="close-menu" onclick="toggleMenu()">&times;</button>
+        
+        <ul>
+            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+            <li><a href="#resources" onclick="toggleMenu()">Resources</a></li>
+            <li><a href="#contacts" onclick="toggleMenu()">Contacts</a></li>
+        </ul>
     </nav>
 
     <main id="hero-section">
@@ -38,7 +39,7 @@
                 <span class="dot red"></span>
                 <span class="dot yellow"></span>
                 <span class="dot green"></span>
-                <span class="terminal-title">AVADIGIT_CONSOLE</span>
+                <span class="terminal-title">AVADIGIT_CONSOLE_v3.0</span>
             </div>
             <div id="terminal-body">
                 <div id="output"></div>
@@ -51,7 +52,7 @@
         </div>
     </main>
 
-    <a href="https://wa.me/+234YOURNUMBER" class="whatsapp-bar" target="_blank">
+    <a href="https://wa.me/+2341234567890" class="whatsapp-bar" target="_blank">
         <span class="online-status"></span>
         <span class="chat-text">Chat via WhatsApp</span>
         <i class="fab fa-whatsapp"></i>
