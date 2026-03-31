@@ -1,122 +1,122 @@
-/* -- BASIC RESET -- */
-* { margin: 0; padding: 0; box-shadow: border-box; }
-body, html { height: 100%; font-family: 'Helvetica Neue', Arial, sans-serif; overflow: hidden; background-color: #000; }
+:root {
+    --main-blue: #00d2ff;
+    --text-white: #ffffff;
+    --neon-orange: #ff6600;
+}
 
-/* -- 1. HEADER (Static) -- */
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #050505;
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+}
+
+/* --- HEADER FIX: This makes the hamburger clickable --- */
 #main-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 70px;
-    background-color: rgba(18, 18, 18, 0.95);
+    background-color: rgba(5, 5, 5, 0.9);
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centers the logo */
     align-items: center;
-    padding: 0 20px;
-    z-index: 1000;
+    z-index: 5000; /* Highest priority */
+    border-bottom: 1px solid rgba(0, 210, 255, 0.2);
 }
 
-.logo-blue { color: #007bff; font-weight: bold; font-size: 1.6rem; }
-.logo-white { color: #ffffff; font-weight: bold; font-size: 1.6rem; }
+#logo-container {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.logo-blue { color: var(--main-blue); }
+.logo-white { color: var(--text-white); }
 
 #menu-toggle {
+    position: absolute;
+    left: 20px;
     background: none;
     border: none;
-    color: #ffffff;
+    color: white;
     font-size: 1.5rem;
+    cursor: pointer;
+    padding: 10px; /* Makes it easier to hit on mobile */
+}
+
+/* --- SLIDE-OUT MENU --- */
+#side-menu {
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(10, 10, 10, 0.98);
+    z-index: 6000; /* Above the header when open */
+    overflow-x: hidden;
+    transition: 0.5s ease;
+    padding-top: 80px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 3rem;
     cursor: pointer;
 }
 
-/* -- 2. HERO SECTION (Dynamic Content) -- */
+#side-menu ul { list-style: none; padding: 20px 40px; }
+#side-menu a { text-decoration: none; color: #888; font-size: 1.5rem; display: block; margin-bottom: 20px; }
+
+/* --- HERO SECTION --- */
 #hero-section {
     position: relative;
     height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    /* Use a clean, architectural tech background */
-    background-image: url('https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1600');
-    background-size: cover;
-    background-position: center;
+    background: url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg') center/cover no-repeat;
+    z-index: 1; /* Lowest priority */
 }
 
-/* Overlay darkens the image to make text pop */
 .background-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 100%);
-    z-index: 1;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
 }
 
-.hero-content {
+#terminal-container {
     position: relative;
-    z-index: 10;
-    max-width: 80%;
-    color: #ffffff;
-}
-
-.hero-content h1 {
-    font-size: 2.5rem;
-    font-weight: 300;
-    margin-bottom: 20px;
-    letter-spacing: -1px;
-}
-
-#typer-text {
-    font-size: 1.2rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #ccc;
-    min-height: 3em; /* Prevents layout shifting during typing */
-}
-
-/* The vertical bar that blinks like a command line */
-.cursor {
-    display: inline-block;
-    color: #007bff; /* Neo Cloud Blue */
-    font-weight: bold;
-    animation: blink 0.8s infinite;
-}
-
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-/* -- 3. WHATSAPP (Static) -- */
-#whatsapp-container {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    display: flex;
-    align-items: center;
-    z-index: 1000;
-}
-
-.whatsapp-bubble {
-    width: 60px;
-    height: 60px;
-    background-color: #25d366;
-    border-radius: 50%;
-    color: #ffffff;
-    font-size: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-.chat-status {
-    background-color: rgba(255,255,255,0.9);
-    padding: 10px 15px;
+    z-index: 2;
+    width: 90%;
+    max-width: 600px;
+    background: rgba(15, 15, 15, 0.9);
+    border: 1px solid #333;
+    padding: 20px;
     border-radius: 10px;
-    margin-left: 15px;
-    display: flex;
-    flex-direction: column;
 }
 
-.chat-status span { font-size: 0.75rem; color: #555; }
-.chat-status strong { font-size: 0.9rem; color: #000; }
+/* --- WHATSAPP PILL --- */
+.whatsapp-pill {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--neon-orange);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    z-index: 5000; /* Same as header */
+}
